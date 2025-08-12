@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מאבחן תקלות רכב</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>מאבחן תקלות רכב</h1>
+    </header>
+    <main>
+        <section id="diagnostic">
+            <p>בחר את הסימפטומים שזיהית:</p>
+            <form id="symptomForm">
+                <label><input type="checkbox" name="symptom" value="engine"> בעיות בהנעת המנוע</label><br>
+                <label><input type="checkbox" name="symptom" value="brakes"> רעשים או בעיות בבלמים</label><br>
+                <label><input type="checkbox" name="symptom" value="ac"> מיזוג לא מקרר</label><br>
+                <label><input type="checkbox" name="symptom" value="lights"> אורות לא פועלים</label><br>
+                <button type="submit">אבחן</button>
+            </form>
+            <div id="result"></div>
+        </section>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>
