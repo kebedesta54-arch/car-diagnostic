@@ -1,35 +1,56 @@
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    margin: 0;
-    padding: 0;
-    direction: rtl;
+:root{
+  --bg:#f6f8fb; --card:#ffffff; --ink:#0b132b; --muted:#667389; --line:#e6e9f0;
+  --pri:#2563eb; --pri-ink:#ffffff; --ok:#16a34a; --warn:#f59e0b; --bad:#ef4444;
 }
-header {
-    background-color: #007BFF;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
-}
-main {
-    padding: 20px;
-}
-button {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-button:hover {
-    background-color: #218838;
-}
-#result {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: white;
-    border-radius: 5px;
-}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#f1f5fb,#fff);font-family:'Heebo',system-ui,Arial;direction:rtl;color:var(--ink)}
+.container{max-width:1100px;margin:0 auto;padding:16px}
+
+.hero{position:sticky;top:0;background:rgba(255,255,255,.9);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--line);z-index:10}
+.hero-grid{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{width:44px;height:44px;border-radius:12px;background:var(--pri);display:grid;place-items:center;color:#fff;font-size:22px}
+.crumbs{display:flex;gap:8px}
+.crumb{padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--muted);font-size:12px}
+.crumb.active{background:var(--pri);color:var(--pri-ink)}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 6px 24px rgba(20,30,60,.06);padding:18px;margin-top:12px}
+.step{display:none}
+.step.active{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media(max-width:960px){.grid-3,.grid-2{grid-template-columns:1fr}}
+
+.panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px}
+.panel h3{display:flex;align-items:center;gap:8px;margin:0 0 8px 0}
+.pill-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.pill-grid button{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.pill-grid button.active{background:var(--pri);color:#fff;border-color:var(--pri)}
+
+.check-list label{display:flex;justify-content:flex-end;align-items:center;gap:8px;padding:6px 2px}
+.field{display:block;margin-bottom:10px}
+.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff}
+
+.range{margin:8px 0 6px}
+.range input{width:100%}
+.range-labels{display:flex;justify-content:space-between;color:var(--muted);font-size:12px}
+
+.wizard-nav{display:flex;justify-content:space-between;margin-top:14px}
+button{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;cursor:pointer;font-weight:600}
+button.primary{background:var(--pri);color:var(--pri-ink);border-color:var(--pri)}
+button.secondary{background:#fff}
+button:disabled{opacity:.5;cursor:not-allowed}
+
+.result{border:1px solid var(--line);border-radius:12px;padding:12px;margin:8px 0;background:#fbfdff}
+.badges{display:flex;gap:6px;flex-wrap:wrap}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid var(--line);font-size:12px;background:#fff}
+.badge.ok{background:#ecfdf5;border-color:#a7f3d0}
+.badge.warn{background:#fffbeb;border-color:#fde68a}
+.badge.bad{background:#fef2f2;border-color:#fecaca}
+
+.summary{min-height:140px}
+.hint{color:var(--muted);font-size:12px}
+.footer{margin-top:20px;padding:16px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;text-align:center}

@@ -1,29 +1,98 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מאבחן תקלות רכב</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>מאבחן תקלות רכב • Pro+</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <header>
-        <h1>מאבחן תקלות רכב</h1>
-    </header>
-    <main>
-        <section id="diagnostic">
-            <p>בחר את הסימפטומים שזיהית:</p>
-            <form id="symptomForm">
-                <label><input type="checkbox" name="symptom" value="engine"> בעיות בהנעת המנוע</label><br>
-                <label><input type="checkbox" name="symptom" value="brakes"> רעשים או בעיות בבלמים</label><br>
-                <label><input type="checkbox" name="symptom" value="ac"> מיזוג לא מקרר</label><br>
-                <label><input type="checkbox" name="symptom" value="lights"> אורות לא פועלים</label><br>
-                <button type="submit">אבחן</button>
-            </form>
-            <div id="result"></div>
-        </section>
-    </main>
-    <script src="app.js"></script>
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="brand">
+        <div class="logo">🚗</div>
+        <div>
+          <h1>מאבחן תקלות רכב • Pro+</h1>
+          <p>אשף אינטראקטיבי עם מאגר תקלות מורחב וטיפים מיידיים</p>
+        </div>
+      </div>
+      <nav class="crumbs">
+        <span class="crumb active" id="p1">פרטי רכב</span>
+        <span class="crumb" id="p2">שאלות</span>
+        <span class="crumb" id="p3">תוצאות</span>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div id="step1" class="step active">
+        <h2>שלב 1 • פרטי רכב ותסמינים כלליים</h2>
+        <div class="grid-3">
+          <div class="panel">
+            <h3><img src="./assets/engine.svg" alt=""> קטגוריית תקלה</h3>
+            <div id="category-list" class="pill-grid"></div>
+          </div>
+          <div class="panel">
+            <h3><img src="./assets/warning.svg" alt=""> נורות אזהרה</h3>
+            <div id="warning-lights" class="check-list"></div>
+          </div>
+          <div class="panel">
+            <h3>מידע כללי</h3>
+            <label class="field"><span>שנתון</span><select id="year"></select></label>
+            <label class="field"><span>דגם</span><input id="model" placeholder="קורולה / פיקנטו / i20..."></label>
+          </div>
+        </div>
+      </div>
+
+      <div id="step2" class="step">
+        <h2>שלב 2 • שאלות ייעודיות ועוצמת התסמין</h2>
+        <div class="grid-2">
+          <div class="panel">
+            <h3>שאלות</h3>
+            <div id="question-set"></div>
+          </div>
+          <div class="panel">
+            <h3>עוצמה והערות</h3>
+            <div class="range"><input id="severity" type="range" min="0" max="100" value="50"><div class="range-labels"><span>קלה</span><span>חמורה</span></div></div>
+            <label class="field"><span>הערות חופשיות</span><textarea id="notes" placeholder="כל פרט שעוזר: מתי זה קורה, מזג אוויר, מהירות..."></textarea></label>
+          </div>
+        </div>
+      </div>
+
+      <div id="step3" class="step">
+        <h2>שלב 3 • תוצאות, פעולות וסיכום</h2>
+        <div class="panel">
+          <h3>אבחנות משוערות</h3>
+          <div id="results"></div>
+        </div>
+
+        <div class="grid-2">
+          <div class="panel">
+            <h3>סיכום קצר להעתקה</h3>
+            <textarea id="summary" class="summary" readonly></textarea>
+            <div class="actions"><button id="copy">העתק</button><button id="download">הורדה</button><button id="print">הדפסה</button></div>
+          </div>
+          <div class="panel">
+            <h3>שיתוף</h3>
+            <div class="actions"><button id="whatsapp">וואטסאפ</button><button id="email">מייל</button></div>
+            <div class="hint">אין שמירת נתונים בשרת – הדפדפן בלבד</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wizard-nav">
+        <button id="prev" class="secondary">חזור</button>
+        <button id="next" class="primary">הבא</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="container">© <span id="y"></span> גרסת דמו. ההמלצות אינן תחליף לבדיקה מקצועית במוסך.</div></footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+  <script src="./app.js"></script>
 </body>
 </html>
